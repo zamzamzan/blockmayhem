@@ -1,0 +1,19 @@
+local player = game.Players.LocalPlayer
+local char = player.Character or player.CharacterAdded:Wait()
+local blocks = workspace.Blocks
+local pickup = game.ReplicatedStorage.Remotes.Client.Blocks.PickupBlock
+
+while true do
+    for _, v in pairs(workspace:GetDescendants()) do
+        if v:IsA("Part") and v.Name == "Money" then
+            v.CFrame = char.HumanoidRootPart.CFrame
+        end
+    end
+
+    for _, b in pairs(blocks:GetChildren()) do
+        local id, base = b:GetAttribute("UUID"), b:FindFirstChild("Base")
+        if id and base then pickup:FireServer(id, base.CFrame) end
+    end
+
+    task.wait(0.1)
+end
