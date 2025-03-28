@@ -1,23 +1,11 @@
-while true do
-    local player = game.Players.LocalPlayer
-    local char = player.Character
-    local root = char and char:FindFirstChild("HumanoidRootPart")
+while task.wait(0.5) do -- adjust the number to change cooldown  
+    for _, block in pairs(workspace.Blocks:GetChildren()) do  
+        game.ReplicatedStorage.Remotes.Client.Blocks.PickupBlock:FireServer(block:GetAttribute("UUID"), block.Base.CFrame)  
+    end  
 
-    if root then
-        for _, obj in ipairs(workspace:GetDescendants()) do
-            if obj:IsA("Part") and obj.Name == "Money" then
-                obj.CFrame = root.CFrame
-            end
-        end
-
-        for _, block in ipairs(workspace.Blocks:GetChildren()) do
-            local id = block:GetAttribute("UUID")
-            local base = block:FindFirstChild("Base")
-            if id and base then
-                game.ReplicatedStorage.Remotes.Client.Blocks.PickupBlock:FireServer(id, base.CFrame)
-            end
-        end
-    end
-
-    task.wait(0.1)
+    for _, obj in pairs(workspace:GetDescendants()) do  
+        if obj:IsA("Part") and obj.Name == "Money" then  
+            obj.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame  
+        end  
+    end  
 end
