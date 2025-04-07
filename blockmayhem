@@ -1,11 +1,5 @@
-while task.wait(0.5) do -- adjust the number to change cooldown  
-    for _, block in pairs(workspace.Blocks:GetChildren()) do  
-        game.ReplicatedStorage.Remotes.Client.Blocks.PickupBlock:FireServer(block:GetAttribute("UUID"), block.Base.CFrame)  
-    end  
-
-    for _, obj in pairs(workspace:GetDescendants()) do  
-        if obj:IsA("Part") and obj.Name == "Money" then  
-            obj.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame  
-        end  
+for _, obj in pairs(workspace:GetDescendants()) do  
+    if obj:IsA("Part") and obj.Name == "Money" then  
+        obj.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame  
     end  
 end
