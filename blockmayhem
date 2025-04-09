@@ -1,8 +1,8 @@
 while true do
-    for _, obj in pairs(workspace:GetDescendants()) do  
-        if obj:IsA("Part") and obj.Name == "Money" then  
-            obj.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame  
-        end  
-    end
-    task.wait(0.5) -- adjust this
+for _,obj in pairs(workspace:GetDescendants()) do
+if obj:IsA("Part") and obj.Name=="Money" then
+obj.CFrame=game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+end
+end
+task.wait(0.5) -- adjust ts
 end
