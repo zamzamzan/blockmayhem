@@ -1,6 +1,6 @@
 while true do
 for _,o in pairs(workspace:GetDescendants()) do
-if o:IsA("Part") and obj.Name=="Money" then
+if o:IsA("Part") and o.Name=="Money" then
 o.CFrame=game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
 end
 end
